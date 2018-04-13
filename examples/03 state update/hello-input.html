@@ -1,0 +1,35 @@
+<module component='hello-input'>
+	<imports>
+		<link rel='import' href='../../relative.html'/>
+		<link rel='import' href='hello-you.html'/>
+	</imports>
+	
+	<template>
+		<hello-you></hello-you>
+		<br>
+		<input type='text' id='name' value='world'/>
+	</template>
+
+	<script>
+		Relative.define({
+			name: 'hello-input',
+			constructor: class HelloInput extends Relative {
+				connectedCallback() {
+					// save arrow function for further usage
+					this.updateName = () => {
+						this.shadowRoot.querySelector("hello-you").state.your_name = this.shadowRoot.querySelector('#name').value
+					}
+					
+					// call in the first time you run
+					this.updateName()
+					
+					// call on keyup
+					this.shadowRoot.querySelector('#name').addEventListener(
+						'keyup',
+						this.updateName
+					)
+				}
+			}
+		})
+	</script>
+</module>

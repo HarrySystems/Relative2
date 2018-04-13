@@ -1,0 +1,26 @@
+<module component='hello-input'>
+	<imports>
+		<link rel='import' href='../../relative.html'/>
+	</imports>
+	
+	<template>
+		<input type='text'/>
+	</template>
+	
+	<script>
+		Relative.define({
+			name: 'hello-input',
+			constructor: class HelloInput extends Relative {
+				connectedCallback() {
+					let input = this.shadowRoot.querySelector("input")
+					input.addEventListener(
+						'keyup',
+						() => {
+							this.state.value = input.value
+						}
+					)
+				}
+			}
+		})
+	</script>
+</module>

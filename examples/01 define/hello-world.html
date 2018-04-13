@@ -1,0 +1,16 @@
+<module component='hello-world'>
+	<imports>
+		<link rel='import' href='../../relative.html'/>
+	</imports>
+
+	<script>
+		Relative.define({
+			name: 'hello-world',
+			constructor: class CustomElement extends Relative {
+				connectedCallback() {
+					this.shadowRoot.innerHTML = "Hello World!"
+				}
+			}
+		})
+	</script>
+</module>

@@ -1,0 +1,20 @@
+<module component='hello-you'>
+	<imports>
+		<link rel='import' href='../../relative.html'/>
+	</imports>
+
+	<script>
+		Relative.define({
+			name: 'hello-you',
+			constructor: class HelloYou extends Relative {
+				connectedCallback() {
+					this.attributeChangedCallback()
+				}
+				
+				attributeChangedCallback() {
+					this.shadowRoot.innerHTML = `Hello ${this.state.your_name}!`
+				}
+			}
+		})
+	</script>
+</module>
