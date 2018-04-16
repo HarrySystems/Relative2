@@ -112,21 +112,21 @@ class Relative extends HTMLElement {
 		}
 	}
 
-	// watch for changes
-	static watch({name, element, callback, options}) {
-		// create watchers property if it doesn't exist
-		if(element.watchers === undefined)
-			element.watchers = {}
+	// observe for changes
+	static observe({name, element, callback, options}) {
+		// create observers property if it doesn't exist
+		if(element.observers === undefined)
+			element.observers = {}
 			
 		// disconnect it there's a watcher with the same name
-		if(element.watchers[name])
-			element.watchers[name].disconnect()
+		if(element.observers[name])
+			element.observers[name].disconnect()
 
 		// create new watcher
-		element.watchers[name] = new MutationObserver(callback)
+		element.observers[name] = new MutationObserver(callback)
 		
 		// start watching
-		element.watchers[name]
+		element.observers[name]
 			.observe(
 				element,
 				options

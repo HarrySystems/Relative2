@@ -53,7 +53,7 @@ Relative.define({
 				let input = Relative.create(`<hello-input value='world'>`)
 				this.shadowRoot.append(input)
 				
-				Relative.watch({
+				Relative.observe({
 					element: input,
 					callback: () => {
 						you.state.your_name = input.state.value
